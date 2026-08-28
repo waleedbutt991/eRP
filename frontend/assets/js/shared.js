@@ -57,6 +57,20 @@ const MODULES = [
       { name: 'Settings', icon: 'fa-gear' }
     ]
   }
+  { 
+  key: 'crm', 
+  name: 'CRM', 
+  icon: 'fa-handshake', 
+  bg: '#E8F4FD', 
+  color: '#3B82F6', 
+  options: [
+    { name: 'Dashboard', icon: 'fa-house', script: 'crm/dashboard/crm-dashboard.js', renderFunc: 'renderCRMDashboard', isDefault: true },
+    { name: 'Customers', icon: 'fa-users' },
+    { name: 'Leads', icon: 'fa-bullseye' },
+    { name: 'Opportunities', icon: 'fa-chart-line' },
+    { name: 'Activities', icon: 'fa-calendar-check' }
+  ]
+},
 ];
 
 // ========================================
