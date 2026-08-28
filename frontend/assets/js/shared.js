@@ -1,6 +1,6 @@
 // ========================================
 // eERP - Main Routing & Module System
-// Compatible with Vercel + .NET Backend
+// Compatible with Vercel + Node.js Backend
 // ========================================
 
 const MODULES = [
@@ -24,9 +24,9 @@ const MODULES = [
     color: '#16A398', 
     options: [
       { name: 'Dashboard', icon: 'fa-house', script: 'frontend/inventory/dashboard/inventory-dashboard.js', renderFunc: 'renderInventoryDashboard', isDefault: true },
-      { name: 'Opening Stock', icon: 'fa-box-open' },
-      { name: 'Purchase', icon: 'fa-truck-ramp-box' },
-      { name: 'Reports', icon: 'fa-chart-pie' }
+      { name: 'Opening Stock', icon: 'fa-box-open', script: 'frontend/inventory/opening-stock/opening-stock.js', renderFunc: 'renderOpeningStock' },
+      { name: 'Purchase', icon: 'fa-truck-ramp-box', script: 'frontend/inventory/purchase/purchase.js', renderFunc: 'renderPurchase' },
+      { name: 'Reports', icon: 'fa-chart-pie', script: 'frontend/inventory/reports/reports.js', renderFunc: 'renderInventoryReports' }
     ]
   },
   { 
@@ -186,7 +186,6 @@ function loadModule(scriptPath, functionName) {
     if (typeof window[functionName] === 'function') {
       window[functionName](moduleMain);
     } else {
-      // Module loaded but render function not found - show success message for development
       moduleMain.innerHTML = `
         <div style="text-align:center; padding:50px;">
           <div style="width: 80px; height: 80px; background: #16A398; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; color: white; font-size: 40px;">
@@ -221,10 +220,8 @@ function loadModule(scriptPath, functionName) {
 // Global Utility Functions (Future Use)
 // ========================================
 
-// API Helper - Future .NET Backend Integration
 async function fetchAPI(endpoint, options = {}) {
-  // Vercel deployment ke liye relative URL use karein
-  const baseURL = ''; // Production mein ye .NET API ka URL hoga
+  const baseURL = '';
   
   try {
     const response = await fetch(`${baseURL}${endpoint}`, {
@@ -246,7 +243,6 @@ async function fetchAPI(endpoint, options = {}) {
   }
 }
 
-// Local Storage Helper - Temporary data storage
 const Storage = {
   get: (key) => {
     try {
@@ -284,7 +280,6 @@ const Storage = {
 window.addEventListener('popstate', renderRoute);
 window.addEventListener('hashchange', renderRoute);
 
-// Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
   renderRoute();
 });
