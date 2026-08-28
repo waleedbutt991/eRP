@@ -11,9 +11,9 @@ const MODULES = [
     bg: '#FDE8F3', 
     color: '#E91E8C', 
     options: [
-      { name: 'Dashboard', icon: 'fa-house', script: 'sales/dashboard/dashboard.js', renderFunc: 'renderSalesDashboard', isDefault: true },
-      { name: 'POS', icon: 'fa-cash-register', script: 'sales/pos/pos.js', renderFunc: 'renderPOS' },
-      { name: 'Reports', icon: 'fa-chart-pie', script: 'sales/reports/reports.js', renderFunc: 'renderReports' }
+      { name: 'Dashboard', icon: 'fa-house', script: 'frontend/sales/dashboard/dashboard.js', renderFunc: 'renderSalesDashboard', isDefault: true },
+      { name: 'POS', icon: 'fa-cash-register', script: 'frontend/sales/pos/pos.js', renderFunc: 'renderPOS' },
+      { name: 'Reports', icon: 'fa-chart-pie', script: 'frontend/sales/reports/reports.js', renderFunc: 'renderReports' }
     ]
   },
   { 
@@ -23,7 +23,7 @@ const MODULES = [
     bg: '#E3F6F2', 
     color: '#16A398', 
     options: [
-      { name: 'Dashboard', icon: 'fa-house', script: 'inventory/dashboard/dashboard.js', renderFunc: 'renderInventoryDashboard', isDefault: true },
+      { name: 'Dashboard', icon: 'fa-house', script: 'frontend/inventory/dashboard/inventory-dashboard.js', renderFunc: 'renderInventoryDashboard', isDefault: true },
       { name: 'Opening Stock', icon: 'fa-box-open' },
       { name: 'Purchase', icon: 'fa-truck-ramp-box' },
       { name: 'Reports', icon: 'fa-chart-pie' }
@@ -36,7 +36,7 @@ const MODULES = [
     bg: '#FBE6E6', 
     color: '#E0342F', 
     options: [
-      { name: 'Dashboard', icon: 'fa-house', script: 'finance/dashboard/finance-dashboard.js', renderFunc: 'renderFinanceDashboard', isDefault: true },
+      { name: 'Dashboard', icon: 'fa-house', script: 'frontend/finance/dashboard/finance-dashboard.js', renderFunc: 'renderFinanceDashboard', isDefault: true },
       { name: 'Setup', icon: 'fa-sliders' },
       { name: 'Accounts', icon: 'fa-book-open' },
       { name: 'Reports', icon: 'fa-chart-pie' }
@@ -49,28 +49,28 @@ const MODULES = [
     bg: '#EDE7FB', 
     color: '#7B3FC4', 
     options: [
-      { name: 'Dashboard', icon: 'fa-house', script: 'hr/dashboard/hr-dashboard.js', renderFunc: 'renderHRDashboard', isDefault: true },
+      { name: 'Dashboard', icon: 'fa-house', script: 'frontend/hr/dashboard/hr-dashboard.js', renderFunc: 'renderHRDashboard', isDefault: true },
       { name: 'Employee', icon: 'fa-id-badge' },
       { name: 'Leaves', icon: 'fa-umbrella-beach' },
       { name: 'Attendance', icon: 'fa-clock' },
       { name: 'Payroll', icon: 'fa-money-check-dollar' },
       { name: 'Settings', icon: 'fa-gear' }
     ]
-  }
+  },
   { 
-  key: 'crm', 
-  name: 'CRM', 
-  icon: 'fa-handshake', 
-  bg: '#E8F4FD', 
-  color: '#3B82F6', 
-  options: [
-    { name: 'Dashboard', icon: 'fa-house', script: 'crm/dashboard/crm-dashboard.js', renderFunc: 'renderCRMDashboard', isDefault: true },
-    { name: 'Customers', icon: 'fa-users' },
-    { name: 'Leads', icon: 'fa-bullseye' },
-    { name: 'Opportunities', icon: 'fa-chart-line' },
-    { name: 'Activities', icon: 'fa-calendar-check' }
-  ]
-},
+    key: 'crm', 
+    name: 'CRM', 
+    icon: 'fa-handshake', 
+    bg: '#E8F4FD', 
+    color: '#3B82F6', 
+    options: [
+      { name: 'Dashboard', icon: 'fa-house', script: 'frontend/crm/dashboard/crm-dashboard.js', renderFunc: 'renderCRMDashboard', isDefault: true },
+      { name: 'Customers', icon: 'fa-users' },
+      { name: 'Leads', icon: 'fa-bullseye' },
+      { name: 'Opportunities', icon: 'fa-chart-line' },
+      { name: 'Activities', icon: 'fa-calendar-check' }
+    ]
+  }
 ];
 
 // ========================================
