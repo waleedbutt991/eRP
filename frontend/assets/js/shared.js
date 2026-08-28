@@ -70,6 +70,22 @@ const MODULES = [
       { name: 'Opportunities', icon: 'fa-chart-line' },
       { name: 'Activities', icon: 'fa-calendar-check' }
     ]
+  },
+  { 
+    key: 'configuration', 
+    name: 'Configuration', 
+    icon: 'fa-gear', 
+    bg: '#F3F4F6', 
+    color: '#6B7280', 
+    options: [
+      { name: 'Dashboard', icon: 'fa-house', script: 'frontend/configuration/dashboard/configuration-dashboard.js', renderFunc: 'renderConfigurationDashboard', isDefault: true },
+      { name: 'Parties / Clients', icon: 'fa-users', script: 'frontend/configuration/parties/parties.js', renderFunc: 'renderParties' },
+      { name: 'Company Profile', icon: 'fa-id-card', script: 'frontend/configuration/profile/profile.js', renderFunc: 'renderProfile' },
+      { name: 'Branches', icon: 'fa-building', script: 'frontend/configuration/branches/branches.js', renderFunc: 'renderBranches' },
+      { name: 'Warehouses', icon: 'fa-warehouse', script: 'frontend/configuration/warehouses/warehouses.js', renderFunc: 'renderWarehouses' },
+      { name: 'Bank Accounts', icon: 'fa-building-columns', script: 'frontend/configuration/banks/banks.js', renderFunc: 'renderBanks' },
+      { name: 'Tax Settings', icon: 'fa-percent', script: 'frontend/configuration/taxes/taxes.js', renderFunc: 'renderTaxes' }
+    ]
   }
 ];
 
@@ -165,7 +181,6 @@ function loadModule(scriptPath, functionName) {
   const moduleMain = document.querySelector('.module-main');
   if (!moduleMain) return;
   
-  // Show loading state
   moduleMain.innerHTML = `
     <div style="text-align:center; padding:50px; color:var(--text-faint);">
       <i class="fa-solid fa-spinner fa-spin" style="font-size:30px;"></i>
@@ -173,11 +188,9 @@ function loadModule(scriptPath, functionName) {
     </div>
   `;
 
-  // Remove old script if exists
   const oldScript = document.getElementById('dynamicModuleScript');
   if (oldScript) oldScript.remove();
 
-  // Create and load new script
   const script = document.createElement('script');
   script.id = 'dynamicModuleScript';
   script.src = scriptPath;
@@ -193,7 +206,6 @@ function loadModule(scriptPath, functionName) {
           </div>
           <h2 style="color:var(--text); font-family: 'Space Grotesk'; margin-bottom: 10px;">Module Loaded!</h2>
           <p style="color:var(--text-dim); margin-bottom: 20px;">${scriptPath} successfully loaded.</p>
-          <p style="color:var(--text-faint); font-size: 13px;">Next step: Create <code style="background:var(--bg); padding: 4px 8px; border-radius: 4px;">${functionName}(container)</code> function in this file.</p>
         </div>
       `;
     }
@@ -207,35 +219,25 @@ function loadModule(scriptPath, functionName) {
         </div>
         <h2 style="color:var(--text); font-family: 'Space Grotesk'; margin-bottom: 10px;">File Not Found</h2>
         <p style="color:var(--text-dim); margin-bottom: 10px;"><code style="background:var(--bg); padding: 4px 8px; border-radius: 4px;">${scriptPath}</code></p>
-        <p style="color:var(--text-faint); font-size: 13px;">Please create this file to continue.</p>
       </div>
     `;
-    console.error(`Failed to load module: ${scriptPath}`);
   };
   
   document.body.appendChild(script);
 }
 
 // ========================================
-// Global Utility Functions (Future Use)
+// Global Utility Functions
 // ========================================
 
 async function fetchAPI(endpoint, options = {}) {
   const baseURL = '';
-  
   try {
     const response = await fetch(`${baseURL}${endpoint}`, {
-      headers: {
-        'Content-Type': 'application/json',
-        ...options.headers
-      },
+      headers: { 'Content-Type': 'application/json', ...options.headers },
       ...options
     });
-    
-    if (!response.ok) {
-      throw new Error(`API Error: ${response.status}`);
-    }
-    
+    if (!response.ok) throw new Error(`API Error: ${response.status}`);
     return await response.json();
   } catch (error) {
     console.error('API Fetch Error:', error);
@@ -248,28 +250,15 @@ const Storage = {
     try {
       const item = localStorage.getItem(`eERP_${key}`);
       return item ? JSON.parse(item) : null;
-    } catch (error) {
-      console.error('Storage get error:', error);
-      return null;
-    }
+    } catch (error) { return null; }
   },
   set: (key, value) => {
-    try {
-      localStorage.setItem(`eERP_${key}`, JSON.stringify(value));
-      return true;
-    } catch (error) {
-      console.error('Storage set error:', error);
-      return false;
-    }
+    try { localStorage.setItem(`eERP_${key}`, JSON.stringify(value)); return true; } 
+    catch (error) { return false; }
   },
   remove: (key) => {
-    try {
-      localStorage.removeItem(`eERP_${key}`);
-      return true;
-    } catch (error) {
-      console.error('Storage remove error:', error);
-      return false;
-    }
+    try { localStorage.removeItem(`eERP_${key}`); return true; } 
+    catch (error) { return false; }
   }
 };
 
@@ -283,7 +272,3 @@ window.addEventListener('hashchange', renderRoute);
 document.addEventListener('DOMContentLoaded', () => {
   renderRoute();
 });
-
-// ========================================
-// End of shared.js
-// ========================================
