@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ERP — Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="assets/css/shared.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="logo" onclick="navigateTo('')">
+    <div class="mark">e</div>
+    <div>
+      <b>eERP</b>
+      <span>Enterprise System</span>
+    </div>
+  </div>
+  <div class="search-box"><i class="fa-solid fa-magnifying-glass"></i> Search modules…</div>
+  <div class="spacer"></div>
+  <div class="icon-btn"><i class="fa-regular fa-bell"></i><span class="dot"></span></div>
+  <div class="profile">
+    <div class="avatar">AD</div>
+    <div>
+      <div class="name">Admin (001)</div>
+      <div class="role">Administrator</div>
+    </div>
+  </div>
+</div>
+
+<!-- Dashboard view: main module grid -->
+<div id="dashboardView">
+  <div class="content">
+    <div class="grid" id="grid"></div>
+  </div>
+</div>
+
+<!-- Module view: sidebar + dashboard text -->
+<div id="moduleView" class="hidden">
+  <div class="module-shell">
+    <aside class="module-sidebar">
+      <div class="mod-title" id="moduleTitle"></div>
+      <div id="moduleNav"></div>
+      <div class="back-btn" onclick="navigateTo('')"><i class="fa-solid fa-arrow-left"></i> Back to Modules</div>
+    </aside>
+    <div class="module-main">
+      <h1>Dashboard</h1>
+    </div>
+  </div>
+</div>
+
+<script src="assets/js/shared.js"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "name": "eerp-odoo",
+  "version": "1.0.0",
+  "description": "eERP System with Node.js Backend",
+  "scripts": {
+    "dev": "vercel dev"
+  },
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "vercel": "^59.9.1"
+  }
+}
